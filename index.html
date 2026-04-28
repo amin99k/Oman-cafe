@@ -1,36 +1,181 @@
 
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oman Cafe</title>
-  <style>
-    body{margin:0;font-family:Arial;background:#f7efe5;color:#2f1b10}
-    header{background:#2f1b10;color:white;text-align:center;padding:24px}
-    .hero{background:#5b331f;color:white;text-align:center;padding:90px 20px}
-    .hero h1{font-size:46px;margin:0}
-    section{padding:45px 20px;max-width:900px;margin:auto}
-    h2{text-align:center}
-    .card{background:white;padding:20px;margin:10px 0;border-radius:12px}
-    .price{color:#c88b45;font-weight:bold}
-    footer{background:#2f1b10;color:white;text-align:center;padding:20px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oman Cafe</title>
+<style>
+body{margin:0;font-family:Arial;background:#111;color:white}
+header{padding:28px;text-align:center;background:#000}
+header h1{margin:0;font-size:36px}
+.tabs,.subtabs{display:flex;overflow:auto;background:#1b1b1b}
+button{cursor:pointer}
+.tabs button,.subtabs button{flex:1;padding:15px;border:0;background:#222;color:white;font-weight:bold}
+.tabs button.active,.subtabs button.active{background:#c88b45;color:#111}
+.section{display:none;padding:24px 16px 170px}
+.section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+.card{background:#1f1f1f;border-radius:18px;overflow:hidden;box-shadow:0 10px 25px #0006}
+.card img{width:100%;height:130px;object-fit:cover}
+.card div{padding:14px}
+.card h3{margin:0 0 8px}
+.price{color:#c88b45;font-weight:bold}
+.add{width:100%;padding:10px;border:0;border-radius:10px;background:#c88b45;color:#111;font-weight:bold}
+.cart{position:fixed;bottom:0;left:0;right:0;background:#000;padding:14px;border-top:2px solid #c88b45}
+select,.submit{width:100%;padding:12px;margin-top:8px;border-radius:10px;border:0}
+.submit{background:#c88b45;color:#111;font-weight:bold}
+#order{font-size:14px;color:#ddd}
+</style>
 </head>
 <body>
-<header><h1>Oman Cafe</h1></header>
 
-<div class="hero">
-<h1>Fresh Coffee in Muscat</h1>
-<p>Best coffee experience in Oman</p>
+<header>
+<h1>☕ Oman Cafe</h1>
+<p>Modern cafe ordering system in Muscat</p>
+</header>
+
+<div class="tabs">
+<button class="active" onclick="showTab('hot',this)">Hot Drinks</button>
+<button onclick="showTab('cold',this)">Cold Drinks</button>
+<button onclick="showTab('italian',this)">Italian Food</button>
+<button onclick="showTab('dessert',this)">Desserts</button>
 </div>
 
-<section>
-<h2>Menu</h2>
-<div class="card"><h3>Omani Coffee</h3><p class="price">1.2 OMR</p></div>
-<div class="card"><h3>Spanish Latte</h3><p class="price">1.8 OMR</p></div>
+<section id="hot" class="section active"><div class="grid" id="hotGrid"></div></section>
+<section id="cold" class="section"><div class="grid" id="coldGrid"></div></section>
+
+<section id="italian" class="section">
+<div class="subtabs">
+<button class="active" onclick="showSub('pizza',this)">Pizza</button>
+<button onclick="showSub('pasta',this)">Pasta</button>
+<button onclick="showSub('burger',this)">Burger</button>
+<button onclick="showSub('lasagna',this)">Lasagna</button>
+</div>
+<div id="pizza" class="section active"><div class="grid" id="pizzaGrid"></div></div>
+<div id="pasta" class="section"><div class="grid" id="pastaGrid"></div></div>
+<div id="burger" class="section"><div class="grid" id="burgerGrid"></div></div>
+<div id="lasagna" class="section"><div class="grid" id="lasagnaGrid"></div></div>
 </section>
 
-<footer>Oman Cafe - 2026</footer>
+<section id="dessert" class="section"><div class="grid" id="dessertGrid"></div></section>
+
+<div class="cart">
+<select id="table"></select>
+<p id="order">No items selected.</p>
+<button class="submit" onclick="submitOrder()">Submit Order</button>
+</div>
+
+<script>
+const items={
+hot:[
+["Espresso","1.200","https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=500&q=80"],
+["Americano","1.300","https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=500&q=80"],
+["Cappuccino","1.600","https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=80"],
+["Latte","1.700","https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=500&q=80"],
+["Spanish Latte","1.900","https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80"],
+["Hot Chocolate","1.700","https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=500&q=80"]
+],
+cold:[
+["Iced Latte","1.900","https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"],
+["Iced Americano","1.600","https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=80"],
+["Cold Brew","2.000","https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"],
+["Iced Mocha","2.100","https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80"],
+["Lemon Mint","1.500","https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=500&q=80"],
+["Mango Smoothie","2.000","https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=500&q=80"]
+],
+pizza:[
+["Margherita","3.000","https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=500&q=80"],
+["Pepperoni","3.500","https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=80"],
+["Quattro Formaggi","3.800","https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=500&q=80"],
+["BBQ Chicken Pizza","3.700","https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=500&q=80"]
+],
+pasta:[
+["Carbonara","3.500","https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80"],
+["Alfredo","3.300","https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=500&q=80"],
+["Arrabbiata","3.200","https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"],
+["Pesto Pasta","3.600","https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=80"]
+],
+burger:[
+["Classic Beef Burger","2.800","https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80"],
+["Chicken Burger","2.600","https://images.unsplash.com/photo-1606755962773-d324e7a7a7f4?auto=format&fit=crop&w=500&q=80"],
+["Mushroom Swiss Burger","3.000","https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=80"],
+["Spicy Italian Burger","3.100","https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=500&q=80"]
+],
+lasagna:[
+["Classic Beef Lasagna","3.500","https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=500&q=80"],
+["Chicken Lasagna","3.400","https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"],
+["Vegetable Lasagna","3.200","https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80"]
+],
+dessert:[
+["Tiramisu","1.900","https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=500&q=80"],
+["Cheesecake","1.800","https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80"],
+["Chocolate Brownie","1.500","https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80"],
+["Date Cake","1.600","https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=500&q=80"]
+]
+};
+
+let cart=[];
+
+function makeCard(item){
+return `<div class="card">
+<img src="${item[2]}" alt="${item[0]}">
+<div>
+<h3>${item[0]}</h3>
+<p class="price">${item[1]} OMR</p>
+<button class="add" onclick="addItem('${item[0]}','${item[1]}')">Add</button>
+</div>
+</div>`;
+}
+
+function render(id,data){document.getElementById(id).innerHTML=data.map(makeCard).join("")}
+
+render("hotGrid",items.hot);
+render("coldGrid",items.cold);
+render("pizzaGrid",items.pizza);
+render("pastaGrid",items.pasta);
+render("burgerGrid",items.burger);
+render("lasagnaGrid",items.lasagna);
+render("dessertGrid",items.dessert);
+
+function showTab(id,btn){
+document.querySelectorAll("body > .section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+}
+
+function showSub(id,btn){
+document.querySelectorAll("#italian > .section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+document.querySelectorAll(".subtabs button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+}
+
+function addItem(name,price){
+cart.push({name,price});
+updateCart();
+}
+
+function updateCart(){
+if(cart.length===0){document.getElementById("order").innerText="No items selected.";return}
+let total=cart.reduce((sum,i)=>sum+Number(i.price),0).toFixed(3);
+document.getElementById("order").innerText=cart.map(i=>i.name).join(", ")+" | Total: "+total+" OMR";
+}
+
+function submitOrder(){
+let table=document.getElementById("table").value;
+if(cart.length===0){alert("Please select at least one item.");return}
+alert("Order submitted for Table "+table+"\\n"+cart.map(i=>i.name+" - "+i.price+" OMR").join("\\n"));
+}
+
+for(let i=1;i<=30;i++){
+let o=document.createElement("option");
+o.value=i;
+o.innerText="Table "+i;
+document.getElementById("table").appendChild(o);
+}
+</script>
+
 </body>
 </html>
