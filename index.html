@@ -6,438 +6,276 @@
 <title>Royalty Cafe</title>
 
 <style>
-:root{
-  --bg:#0f0f0f;
-  --card:#1c1c1c;
-  --gold:#c9a45c;
-  --text:#ffffff;
-  --muted:#cfcfcf;
+body{
+margin:0;
+font-family:Arial;
+color:white;
+background:url("https://images.unsplash.com/photo-1509042239860-f550ce710b93") center/cover no-repeat fixed;
 }
 
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.75);
+backdrop-filter:blur(6px);
+z-index:-1;
 }
 
 header{
-  text-align:center;
-  padding:32px 16px;
-  background:linear-gradient(135deg,#000,#2a1b0c);
+text-align:center;
+padding:30px;
 }
 
 header h1{
-  margin:0;
-  color:var(--gold);
-  font-size:40px;
+font-size:38px;
+margin:0;
+color:#e8d3a7;
 }
 
-header p{color:var(--muted)}
-
 .lang button{
-  padding:9px 16px;
-  border:1px solid var(--gold);
-  background:transparent;
-  color:var(--gold);
-  border-radius:25px;
-  margin:4px;
+margin:5px;
+padding:8px 14px;
+border-radius:20px;
+border:1px solid #e8d3a7;
+background:transparent;
+color:#e8d3a7;
 }
 
 .lang button.active{
-  background:var(--gold);
-  color:#111;
+background:#e8d3a7;
+color:black;
 }
 
-.tabs,.subtabs,.miniTabs{
-  display:flex;
-  overflow:auto;
-  background:#151515;
+.tabs{
+display:flex;
+overflow:auto;
+background:#000000aa;
 }
 
-.tabs button,.subtabs button,.miniTabs button{
-  flex:1;
-  min-width:max-content;
-  padding:14px;
-  border:0;
-  background:#222;
-  color:white;
-  font-weight:bold;
+.tabs button{
+flex:1;
+padding:14px;
+border:0;
+background:#222;
+color:white;
 }
 
-.tabs button.active,.subtabs button.active,.miniTabs button.active{
-  background:var(--gold);
-  color:#111;
+.tabs button.active{
+background:#e8d3a7;
+color:black;
 }
 
-.section,.subsection,.miniSection{
-  display:none;
-  padding:22px 14px 210px;
+.section{
+display:none;
+padding:20px 10px 200px;
 }
 
-.section.active,.subsection.active,.miniSection.active{
-  display:block;
+.section.active{
+display:block;
 }
 
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
-  gap:16px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:15px;
 }
 
 .card{
-  background:var(--card);
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #333;
-  box-shadow:0 10px 25px #0008;
+background:#111;
+border-radius:15px;
+overflow:hidden;
 }
 
 .card img{
-  width:100%;
-  height:128px;
-  object-fit:cover;
+width:100%;
+height:120px;
+object-fit:cover;
 }
 
-.cardBody{padding:14px}
-
-.card h3{
-  margin:0 0 8px;
-  font-size:17px;
+.cardBody{
+padding:10px;
+text-align:center;
 }
 
 .price{
-  color:var(--gold);
-  font-weight:bold;
+color:#e8d3a7;
 }
 
 .add{
-  width:100%;
-  padding:10px;
-  border:0;
-  border-radius:10px;
-  background:var(--gold);
-  color:#111;
-  font-weight:bold;
+width:100%;
+padding:8px;
+background:#e8d3a7;
+border:0;
+color:black;
 }
 
 .cart{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#050505;
-  border-top:2px solid var(--gold);
-  padding:12px;
-  z-index:20;
+position:fixed;
+bottom:0;
+width:100%;
+background:black;
+padding:10px;
 }
 
-.cartGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-select,.pay,.submit{
-  width:100%;
-  padding:11px;
-  border:0;
-  border-radius:10px;
-  margin-top:7px;
-}
-
-.payWrap{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-}
-
-.pay{
-  background:#222;
-  color:white;
-  border:1px solid #444;
-}
-
-.pay.active{
-  background:var(--gold);
-  color:#111;
-}
-
-.submit{
-  background:var(--gold);
-  color:#111;
-  font-weight:bold;
-}
-
-#order{
-  font-size:13px;
-  color:#ddd;
-  max-height:48px;
-  overflow:auto;
+select,button{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:10px;
+border:0;
 }
 
 .waiter{
-  position:fixed;
-  right:16px;
-  bottom:220px;
-  background:var(--gold);
-  color:#111;
-  border:0;
-  border-radius:50%;
-  width:58px;
-  height:58px;
-  font-size:23px;
-  box-shadow:0 8px 25px #0009;
-  z-index:30;
+position:fixed;
+right:15px;
+bottom:200px;
+background:#e8d3a7;
+color:black;
+border-radius:50%;
+width:55px;
+height:55px;
+font-size:20px;
+border:0;
 }
 
-@media(max-width:600px){
-  header h1{font-size:32px}
-  .cartGrid{grid-template-columns:1fr}
-  .card img{height:115px}
-  .waiter{bottom:245px}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1 id="brand">Royalty Cafe</h1>
-  <p id="tagline">Luxury cafe ordering experience</p>
-  <div class="lang">
-    <button class="active" onclick="setLang('en',this)">English</button>
-    <button onclick="setLang('ar',this)">العربية</button>
-  </div>
+<h1 id="brand">Royalty Cafe</h1>
+<div class="lang">
+<button class="active" onclick="setLang('en',this)">EN</button>
+<button onclick="setLang('ar',this)">AR</button>
+</div>
 </header>
 
 <div class="tabs">
-  <button class="active" onclick="showMain('drinks',this)" data-en="Drinks" data-ar="المشروبات">Drinks</button>
-  <button onclick="showMain('food',this)" data-en="Food" data-ar="الطعام">Food</button>
+<button class="active" onclick="show('drinks',this)" id="drinksTab">Drinks</button>
+<button onclick="show('food',this)" id="foodTab">Food</button>
 </div>
 
-<section id="drinks" class="section active">
-  <div class="subtabs">
-    <button class="active" onclick="showSub('caf',this)" data-en="Caffeinated" data-ar="كافيين">Caffeinated</button>
-    <button onclick="showSub('noncaf',this)" data-en="Non-Caffeinated" data-ar="بدون كافيين">Non-Caffeinated</button>
-  </div>
+<div id="drinks" class="section active">
+<div class="grid" id="drinksGrid"></div>
+</div>
 
-  <div id="caf" class="subsection active">
-    <div class="miniTabs">
-      <button class="active" onclick="showMini('hotCoffee',this)" data-en="Hot Coffee" data-ar="قهوة ساخنة">Hot Coffee</button>
-      <button onclick="showMini('coldCoffee',this)" data-en="Cold Coffee" data-ar="قهوة باردة">Cold Coffee</button>
-    </div>
-    <div id="hotCoffee" class="miniSection active"><div class="grid" id="hotCoffeeGrid"></div></div>
-    <div id="coldCoffee" class="miniSection"><div class="grid" id="coldCoffeeGrid"></div></div>
-  </div>
-
-  <div id="noncaf" class="subsection">
-    <div class="miniTabs">
-      <button class="active" onclick="showMini('hotNon',this)" data-en="Hot Drinks" data-ar="مشروبات ساخنة">Hot Drinks</button>
-      <button onclick="showMini('coldNon',this)" data-en="Cold Drinks" data-ar="مشروبات باردة">Cold Drinks</button>
-      <button onclick="showMini('mocktails',this)" data-en="Mocktails" data-ar="موكتيل">Mocktails</button>
-      <button onclick="showMini('juices',this)" data-en="Fresh Juices" data-ar="عصائر طازجة">Fresh Juices</button>
-    </div>
-    <div id="hotNon" class="miniSection active"><div class="grid" id="hotNonGrid"></div></div>
-    <div id="coldNon" class="miniSection"><div class="grid" id="coldNonGrid"></div></div>
-    <div id="mocktails" class="miniSection"><div class="grid" id="mocktailsGrid"></div></div>
-    <div id="juices" class="miniSection"><div class="grid" id="juicesGrid"></div></div>
-  </div>
-</section>
-
-<section id="food" class="section">
-  <div class="subtabs">
-    <button class="active" onclick="showSub('pizza',this)">Pizza</button>
-    <button onclick="showSub('pasta',this)">Pasta</button>
-    <button onclick="showSub('burger',this)">Burger</button>
-    <button onclick="showSub('lasagna',this)">Lasagna</button>
-    <button onclick="showSub('soft',this)" data-en="Soft Drinks" data-ar="مشروبات غازية وماء">Soft Drinks</button>
-  </div>
-
-  <div id="pizza" class="subsection active"><div class="grid" id="pizzaGrid"></div></div>
-  <div id="pasta" class="subsection"><div class="grid" id="pastaGrid"></div></div>
-  <div id="burger" class="subsection"><div class="grid" id="burgerGrid"></div></div>
-  <div id="lasagna" class="subsection"><div class="grid" id="lasagnaGrid"></div></div>
-  <div id="soft" class="subsection"><div class="grid" id="softGrid"></div></div>
-</section>
+<div id="food" class="section">
+<div class="grid" id="foodGrid"></div>
+</div>
 
 <button class="waiter" onclick="callWaiter()">🔔</button>
 
 <div class="cart">
-  <div class="cartGrid">
-    <select id="table"></select>
-    <div class="payWrap">
-      <button class="pay active" onclick="setPay('cash',this)" data-en="Cash" data-ar="نقدي">Cash</button>
-      <button class="pay" onclick="setPay('paypal',this)">PayPal</button>
-    </div>
-  </div>
-  <p id="order">No items selected.</p>
-  <button class="submit" onclick="submitOrder()" data-en="Submit Order" data-ar="إرسال الطلب">Submit Order</button>
+<select id="table"></select>
+<p id="order"></p>
+
+<button onclick="pay('paypal')" id="paypalBtn">PayPal</button>
+<button onclick="pay('cash')" id="cashBtn">Cash</button>
+
+<button onclick="submitOrder()" id="submitBtn">Submit</button>
 </div>
 
 <script>
 let lang="en";
-let payment="cash";
 let cart=[];
 
-const img="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80";
+const drinks=[
+["Latte","لاتيه","https://images.unsplash.com/photo-1570968915860-54d5c301fa9f"],
+["Espresso","إسبريسو","https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04"],
+["Iced Coffee","قهوة مثلجة","https://images.unsplash.com/photo-1517701604599-bb29b565090c"],
+["Mojito","موهيتو","https://images.unsplash.com/photo-1621263764928-df1444c5e859"],
+["Orange Juice","عصير برتقال","https://images.unsplash.com/photo-1600271886742-f049cd451bba"]
+];
 
-const menu={
-hotCoffee:[
-["Espresso","1.200"],["Americano","1.300"],["Cappuccino","1.600"],["Latte","1.700"],["Spanish Latte","1.900"],["Mocha","1.900"]
-],
-coldCoffee:[
-["Iced Latte","1.900"],["Iced Americano","1.600"],["Cold Brew","2.000"],["Iced Mocha","2.100"],["Caramel Frappe","2.200"],["Mocha Frappe","2.200"]
-],
-hotNon:[
-["Hot Chocolate","1.700"],["Saffron Milk","1.800"],["Karak Tea","1.000"],["Mint Tea","1.000"],["Ginger Tea","1.100"],["Omani Kahwa","1.200"]
-],
-coldNon:[
-["Iced Chocolate","1.900"],["Iced Tea","1.500"],["Lemon Mint","1.600"],["Rose Milk","1.700"]
-],
-mocktails:[
-["Mojito Classic","2.000"],["Blue Lagoon","2.200"],["Passion Fruit Mocktail","2.300"],["Strawberry Mojito","2.300"]
-],
-juices:[
-["Orange Juice","1.800"],["Mango Juice","2.000"],["Watermelon Juice","1.800"],["Pineapple Juice","2.000"],["Avocado Juice","2.300"]
-],
-pizza:[
-["Margherita","3.000"],["Pepperoni","3.500"],["Quattro Formaggi","3.800"],["BBQ Chicken Pizza","3.700"],["Truffle Pizza","4.200"]
-],
-pasta:[
-["Carbonara","3.500"],["Alfredo","3.300"],["Arrabbiata","3.200"],["Bolognese","3.600"],["Pesto Pasta","3.600"]
-],
-burger:[
-["Classic Beef Burger","2.800"],["Chicken Burger","2.600"],["Mushroom Swiss Burger","3.000"],["Spicy Italian Burger","3.100"]
-],
-lasagna:[
-["Classic Beef Lasagna","3.500"],["Chicken Lasagna","3.400"],["Vegetable Lasagna","3.200"],["Four Cheese Lasagna","3.600"]
-],
-soft:[
-["Mineral Water","0.300"],["Sparkling Water","0.800"],["Coca-Cola","0.600"],["Sprite","0.600"],["Fanta","0.600"]
-]
-};
+const food=[
+["Pizza","بيتزا","https://images.unsplash.com/photo-1604382355076-af4b0eb60143"],
+["Pasta","باستا","https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9"],
+["Burger","برجر","https://images.unsplash.com/photo-1568901346375-23c9450c58cd"],
+["Lasagna","لازانيا","https://images.unsplash.com/photo-1619895092538-128341789043"]
+];
 
-function card(item){
+function render(){
+document.getElementById("drinksGrid").innerHTML=drinks.map(i=>card(i)).join("");
+document.getElementById("foodGrid").innerHTML=food.map(i=>card(i)).join("");
+}
+
+function card(i){
 return `
 <div class="card">
-  <img src="${img}" alt="${item[0]}">
-  <div class="cardBody">
-    <h3>${item[0]}</h3>
-    <p class="price">${item[1]} OMR</p>
-    <button class="add" onclick="addItem('${item[0]}','${item[1]}')">${lang==="ar"?"إضافة":"Add"}</button>
-  </div>
+<img src="${i[2]}">
+<div class="cardBody">
+<h3>${lang==="ar"?i[1]:i[0]}</h3>
+<p class="price">2 OMR</p>
+<button class="add" onclick="add('${i[0]}')">${lang==="ar"?"إضافة":"Add"}</button>
+</div>
 </div>`;
 }
 
-function renderAll(){
-Object.keys(menu).forEach(k=>{
-document.getElementById(k+"Grid").innerHTML=menu[k].map(card).join("");
-});
-updateCart();
-translate();
+function add(item){
+cart.push(item);
+document.getElementById("order").innerText=cart.join(",");
 }
 
-function showMain(id,btn){
-document.querySelectorAll("body > .section").forEach(s=>s.classList.remove("active"));
+function pay(type){
+if(type==="paypal"){
+alert(lang==="ar"?"باي بال غير متاح":"PayPal unavailable");
+}
+}
+
+function submitOrder(){
+alert(lang==="ar"?"سيأتي النادل":"Waiter will come");
+}
+
+function callWaiter(){
+let t=prompt(lang==="ar"?"رقم الطاولة؟":"Table number?");
+if(t) alert(lang==="ar"?"تم استدعاء النادل":"Waiter called");
+}
+
+function show(id,btn){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
 btn.classList.add("active");
 }
 
-function showSub(id,btn){
-let parent=btn.closest(".section");
-parent.querySelectorAll(":scope > .subsection").forEach(s=>s.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-parent.querySelectorAll(":scope > .subtabs button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-}
-
-function showMini(id,btn){
-let parent=btn.closest(".subsection");
-parent.querySelectorAll(":scope > .miniSection").forEach(s=>s.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-parent.querySelectorAll(":scope > .miniTabs button").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-}
-
-function addItem(name,price){
-cart.push({name,price:Number(price)});
-updateCart();
-}
-
-function updateCart(){
-if(cart.length===0){
-document.getElementById("order").innerText=lang==="ar"?"لا توجد عناصر مختارة.":"No items selected.";
-return;
-}
-let total=cart.reduce((s,i)=>s+i.price,0).toFixed(3);
-document.getElementById("order").innerText=cart.map(i=>i.name).join(", ")+" | Total: "+total+" OMR";
-}
-
-function setPay(type,btn){
-payment=type;
-document.querySelectorAll(".pay").forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-if(type==="paypal"){
-alert(lang==="ar"?"PayPal غير متاح حالياً.":"PayPal is currently unavailable.");
-}
-}
-
-function submitOrder(){
-if(cart.length===0){
-alert(lang==="ar"?"اختر عنصراً واحداً على الأقل.":"Please select at least one item.");
-return;
-}
-let place=document.getElementById("table").value;
-if(payment==="paypal"){
-alert(lang==="ar"?"PayPal غير متاح حالياً. الرجاء اختيار الدفع النقدي.":"PayPal is currently unavailable. Please choose cash.");
-return;
-}
-alert(
-(lang==="ar"?"تم إرسال الطلب. ":"Order submitted. ")+
-(lang==="ar"?"سيصل النادل أو موظف الصالة للدفع.":"A waiter or floor staff will come for cash payment.")+
-"\\n"+place
-);
-}
-
-function callWaiter(){
-let t=prompt(lang==="ar"?"اكتب رقم الطاولة أو اكتب Takeaway:":"Enter your table number or type Takeaway:");
-if(t){
-alert(lang==="ar"?"تم استدعاء النادل.":"Waiter has been called.");
-}
-}
-
 function setLang(l,btn){
 lang=l;
-document.documentElement.lang=l;
-document.documentElement.dir=l==="ar"?"rtl":"ltr";
 document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
 btn.classList.add("active");
-renderAll();
+
+if(l==="ar"){
+document.body.dir="rtl";
+document.getElementById("brand").innerText="رويالتي كافيه";
+document.getElementById("drinksTab").innerText="المشروبات";
+document.getElementById("foodTab").innerText="الطعام";
+document.getElementById("submitBtn").innerText="إرسال الطلب";
+document.getElementById("cashBtn").innerText="نقدي";
+document.getElementById("paypalBtn").innerText="باي بال";
+}else{
+document.body.dir="ltr";
+document.getElementById("brand").innerText="Royalty Cafe";
+document.getElementById("drinksTab").innerText="Drinks";
+document.getElementById("foodTab").innerText="Food";
+document.getElementById("submitBtn").innerText="Submit";
+document.getElementById("cashBtn").innerText="Cash";
+document.getElementById("paypalBtn").innerText="PayPal";
 }
 
-function translate(){
-document.getElementById("tagline").innerText=lang==="ar"?"تجربة طلب فاخرة في المقهى":"Luxury cafe ordering experience";
-document.querySelectorAll("[data-en]").forEach(el=>{
-el.innerText=lang==="ar"?el.dataset.ar:el.dataset.en;
-});
+render();
 }
 
 for(let i=1;i<=30;i++){
 let o=document.createElement("option");
-o.value="Table "+i;
 o.innerText="Table "+i;
 document.getElementById("table").appendChild(o);
 }
-let take=document.createElement("option");
-take.value="Takeaway";
-take.innerText="Takeaway";
-document.getElementById("table").appendChild(take);
+let t=document.createElement("option");
+t.innerText="Takeaway";
+document.getElementById("table").appendChild(t);
 
-renderAll();
+render();
 </script>
 
 </body>
