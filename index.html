@@ -60,19 +60,27 @@
 </section>
 <button class="waiter" onclick="callWaiter()">🔔</button>
 <div class="orderBar">
-  <div class="row">
-    <div>
-      <label><input type="radio" name="mode" value="dine" checked onchange="modeChanged()"> <span data-en="Dine In" data-ar="داخل الصالة">Dine In</span></label>
-      <label><input type="radio" name="mode" value="take" onchange="modeChanged()"> <span data-en="Takeaway" data-ar="سفري">Takeaway</span></label>
-    </div>
-    <select id="table"></select>
-  </div>
   <p id="order" class="orderText">No items selected.</p>
-  <button class="btn" onclick="confirmOrder()" data-en="Confirm Order" data-ar="تأكيد الطلب">Confirm Order</button>
-  <div id="cartDetails" class="cartDetails"></div>
-  <div id="payment" class="payment">
-    <button onclick="payCash()" data-en="Cash" data-ar="نقدي">Cash</button>
-    <button onclick="payPaypal()" data-en="PayPal" data-ar="باي بال">PayPal</button>
+  <button class="btn" onclick="confirmOrder()" data-en="View Order" data-ar="عرض الطلب">View Order</button>
+</div>
+<div id="checkout" class="checkoutOverlay">
+  <div class="checkoutPanel">
+    <button class="closeCheckout" onclick="closeCheckout()">×</button>
+    <h2 data-en="Your Order" data-ar="طلبك">Your Order</h2>
+    <div id="checkoutItems" class="checkoutItems"></div>
+    <div class="checkoutControls">
+      <div class="row">
+        <div>
+          <label><input type="radio" name="mode" value="dine" checked onchange="modeChanged()"> <span data-en="Dine In" data-ar="داخل الصالة">Dine In</span></label>
+          <label><input type="radio" name="mode" value="take" onchange="modeChanged()"> <span data-en="Takeaway" data-ar="سفري">Takeaway</span></label>
+        </div>
+        <select id="table"></select>
+      </div>
+      <div id="payment" class="payment show">
+        <button onclick="payCash()" data-en="Cash" data-ar="نقدي">Cash</button>
+        <button onclick="payPaypal()" data-en="PayPal" data-ar="باي بال">PayPal</button>
+      </div>
+    </div>
   </div>
 </div>
 <script src="menu-data.js"></script>
