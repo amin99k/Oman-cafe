@@ -1,5 +1,5 @@
 :root{--cream:#f5e9d6;--gold:#8b5e34;--deep:#0b0705;--glass:rgba(18,12,9,.74);--line:rgba(245,233,214,.16);--accent:#d43a3a;--accent-dark:#9f1518}
-body{background:radial-gradient(circle at 76% 13%,rgba(210,116,62,.16),transparent 34%),linear-gradient(rgba(0,0,0,.74),rgba(0,0,0,.91)),url("https://raw.githubusercontent.com/amin99k/Oman-cafe/396c6fa1d7327444dee9126f757aca324f14113f/0E0B330E-38EB-40EC-AD0B-88E178A7F602.png") center/cover fixed no-repeat!important}
+body{background:radial-gradient(circle at 76% 13%,rgba(210,116,62,.16),transparent 34%),linear-gradient(rgba(0,0,0,.74),rgba(0,0,0,.91)),url("https://raw.githubusercontent.com/amin99k/Oman-cafe/9fc731da26eedf3f09567157dd3fc96e16f026b3/IMG_1173.jpeg") center/cover fixed no-repeat!important}
 .topbar{background:linear-gradient(180deg,rgba(9,7,6,.95),rgba(9,7,6,.68))!important;border-bottom:1px solid rgba(245,233,214,.10)!important;box-shadow:0 14px 34px rgba(0,0,0,.50)!important}
 .brand{justify-content:flex-start!important;padding:0 12px!important;gap:9px!important;width:auto!important;direction:ltr!important}
 .logo{background:linear-gradient(90deg,#fff4e8,#f5e9d6,#d43a3a)!important;-webkit-background-clip:text!important;color:transparent!important;font-family:Georgia,'Times New Roman',serif!important;letter-spacing:1.8px!important;text-shadow:0 10px 24px rgba(0,0,0,.58)!important}
