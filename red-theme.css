@@ -7,6 +7,7 @@ body{background:radial-gradient(circle at 18% 8%,rgba(229,57,53,.36),transparent
 .tabs,.subtabs,.miniTabs{background:rgba(12,4,5,.58)!important;border-color:rgba(255,241,238,.15)!important}
 .tabs button{display:flex!important;align-items:center!important;justify-content:center!important}.tabs button::before{display:block!important;margin:auto!important;text-align:center!important;line-height:1!important}
 .tabs button.active,.subtabs button.active,.miniTabs::before,.miniTabs:has(button:nth-child(3)) button.active,.btn,.qty button,.row label:has(input:checked),.waiter{background:linear-gradient(180deg,#ff8a80,#c1121f)!important;color:#fff!important}
+.waiter{font-size:32px!important;display:flex!important;align-items:center!important;justify-content:center!important;line-height:1!important}
 .qty button,.checkoutQty button{display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;padding:0!important;text-align:center!important}.qty span{display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important}
 .card{background:linear-gradient(180deg,rgba(38,12,13,.78),rgba(8,4,5,.78))!important;border-color:rgba(255,241,238,.16)!important}
 .card:hover{border-color:rgba(255,241,238,.30)!important}.card img{filter:blur(.35px) saturate(1.16) contrast(1.06)!important;transform:scale(1.01)!important}
