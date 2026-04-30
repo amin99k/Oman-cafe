@@ -1,10 +1,13 @@
 :root{--cream:#fff1ee;--gold:#e53935;--deep:#080607;--glass:rgba(20,8,8,.66);--line:rgba(255,241,238,.18)}
 body{background:radial-gradient(circle at 18% 8%,rgba(229,57,53,.36),transparent 26%),radial-gradient(circle at 88% 18%,rgba(255,138,128,.22),transparent 22%),linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.76)),url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1800&q=92") center/cover fixed no-repeat!important}
 .topbar{background:linear-gradient(180deg,rgba(10,5,6,.84),rgba(10,5,6,.44))!important;border-bottom-color:rgba(255,241,238,.18)!important}
+.brand{justify-content:center!important;width:100%!important;padding:0 74px!important}.tagline{text-align:center!important;width:100%!important;margin-left:auto!important;margin-right:auto!important}
 .logo{background:linear-gradient(90deg,#fff3ef,#ff6b5f,#ffd1cc)!important;-webkit-background-clip:text!important;color:transparent!important}
 .crown::before{background:linear-gradient(135deg,#fff0ec 0%,#ff6b5f 42%,#b5121b 100%)!important}.crown::after{background:linear-gradient(90deg,#9b1018,#ffb1a8,#9b1018)!important}
 .tabs,.subtabs,.miniTabs{background:rgba(12,4,5,.58)!important;border-color:rgba(255,241,238,.15)!important}
+.tabs button{display:flex!important;align-items:center!important;justify-content:center!important}.tabs button::before{display:block!important;margin:auto!important;text-align:center!important;line-height:1!important}
 .tabs button.active,.subtabs button.active,.miniTabs::before,.miniTabs:has(button:nth-child(3)) button.active,.btn,.qty button,.row label:has(input:checked),.waiter{background:linear-gradient(180deg,#ff8a80,#c1121f)!important;color:#fff!important}
+.qty button,.checkoutQty button{display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;padding:0!important;text-align:center!important}.qty span{display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important}
 .card{background:linear-gradient(180deg,rgba(38,12,13,.78),rgba(8,4,5,.78))!important;border-color:rgba(255,241,238,.16)!important}
 .card:hover{border-color:rgba(255,241,238,.30)!important}.card img{filter:blur(.35px) saturate(1.16) contrast(1.06)!important;transform:scale(1.01)!important}
 .orderBar{background:linear-gradient(180deg,rgba(14,6,7,.92),rgba(0,0,0,.84))!important;border-color:rgba(255,241,238,.32)!important}.checkoutPanel{background:linear-gradient(180deg,rgba(28,8,9,.97),rgba(5,3,3,.97))!important;border-color:rgba(255,241,238,.24)!important}
