@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royalty Cafe</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="crown">👑</span><h1 class="logo">Royalty Cafe</h1></div>
+  <p class="tagline" id="tagline">A calm and elegant cafe experience</p>
+  <div class="lang"><button class="active" onclick="setLang('en',this)">EN</button><button onclick="setLang('ar',this)">AR</button></div>
+</header>
+<div class="tabs">
+  <button class="active" onclick="showMain('drinks',this)" data-en="Drinks" data-ar="المشروبات">Drinks</button>
+  <button onclick="showMain('food',this)" data-en="Food" data-ar="الطعام">Food</button>
+</div>
+<section id="drinks" class="section active">
+  <div class="subtabs">
+    <button class="active" onclick="showSub('caf',this)" data-en="Caffeinated" data-ar="كافيين">Caffeinated</button>
+    <button onclick="showSub('noncaf',this)" data-en="Non-Caffeinated" data-ar="بدون كافيين">Non-Caffeinated</button>
+  </div>
+  <div id="caf" class="subsection active">
+    <div class="miniTabs">
+      <button class="active" onclick="showMini('hotCoffee',this)" data-en="Hot Coffee" data-ar="قهوة ساخنة">Hot Coffee</button>
+      <button onclick="showMini('coldCoffee',this)" data-en="Cold Coffee" data-ar="قهوة باردة">Cold Coffee</button>
+    </div>
+    <div id="hotCoffee" class="miniSection active"><div class="grid" id="hotCoffeeGrid"></div></div>
+    <div id="coldCoffee" class="miniSection"><div class="grid" id="coldCoffeeGrid"></div></div>
+  </div>
+  <div id="noncaf" class="subsection">
+    <div class="miniTabs">
+      <button class="active" onclick="showMini('hotNon',this)" data-en="Hot Drinks" data-ar="مشروبات ساخنة">Hot Drinks</button>
+      <button onclick="showMini('coldNon',this)" data-en="Cold Drinks" data-ar="مشروبات باردة">Cold Drinks</button>
+      <button onclick="showMini('mocktails',this)" data-en="Mocktails" data-ar="موكتيلات">Mocktails</button>
+      <button onclick="showMini('juices',this)" data-en="Fresh Juices" data-ar="عصائر طازجة">Fresh Juices</button>
+      <button onclick="showMini('tea',this)" data-en="Tea" data-ar="شاي">Tea</button>
+    </div>
+    <div id="hotNon" class="miniSection active"><div class="grid" id="hotNonGrid"></div></div>
+    <div id="coldNon" class="miniSection"><div class="grid" id="coldNonGrid"></div></div>
+    <div id="mocktails" class="miniSection"><div class="grid" id="mocktailsGrid"></div></div>
+    <div id="juices" class="miniSection"><div class="grid" id="juicesGrid"></div></div>
+    <div id="tea" class="miniSection"><div class="grid" id="teaGrid"></div></div>
+  </div>
+</section>
+<section id="food" class="section">
+  <div class="subtabs">
+    <button class="active" onclick="showSub('pizza',this)" data-en="Pizza" data-ar="بيتزا">Pizza</button>
+    <button onclick="showSub('pasta',this)" data-en="Pasta" data-ar="باستا">Pasta</button>
+    <button onclick="showSub('burger',this)" data-en="Burger" data-ar="برجر">Burger</button>
+    <button onclick="showSub('lasagna',this)" data-en="Lasagna" data-ar="لازانيا">Lasagna</button>
+    <button onclick="showSub('soft',this)" data-en="Water & Soda" data-ar="ماء ومشروبات غازية">Water & Soda</button>
+  </div>
+  <div id="pizza" class="subsection active"><div class="grid" id="pizzaGrid"></div></div>
+  <div id="pasta" class="subsection"><div class="grid" id="pastaGrid"></div></div>
+  <div id="burger" class="subsection"><div class="grid" id="burgerGrid"></div></div>
+  <div id="lasagna" class="subsection"><div class="grid" id="lasagnaGrid"></div></div>
+  <div id="soft" class="subsection"><div class="grid" id="softGrid"></div></div>
+</section>
+<button class="waiter" onclick="callWaiter()">🔔</button>
+<div class="orderBar">
+  <div class="row">
+    <div>
+      <label><input type="radio" name="mode" value="dine" checked onchange="modeChanged()"> <span data-en="Dine In" data-ar="داخل الصالة">Dine In</span></label>
+      <label><input type="radio" name="mode" value="take" onchange="modeChanged()"> <span data-en="Takeaway" data-ar="سفري">Takeaway</span></label>
+    </div>
+    <select id="table"></select>
+  </div>
+  <p id="order" class="orderText">No items selected.</p>
+  <button class="btn" onclick="confirmOrder()" data-en="Confirm Order" data-ar="تأكيد الطلب">Confirm Order</button>
+  <div id="cartDetails" class="cartDetails"></div>
+  <div id="payment" class="payment">
+    <button onclick="payCash()" data-en="Cash" data-ar="نقدي">Cash</button>
+    <button onclick="payPaypal()" data-en="PayPal" data-ar="باي بال">PayPal</button>
+  </div>
+</div>
+<script src="menu-data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
