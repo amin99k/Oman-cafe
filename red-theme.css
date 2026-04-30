@@ -1,11 +1,7 @@
 :root{--cream:#f5e9da;--gold:#c8a26a;--deep:#080607;--glass:rgba(20,10,8,.7);--line:rgba(255,240,220,.14)}
-body{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=90") center/cover fixed no-repeat!important}
+body{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),url("https://raw.githubusercontent.com/amin99k/Oman-cafe/396c6fa1d7327444dee9126f757aca324f14113f/0E0B330E-38EB-40EC-AD0B-88E178A7F602.png") center/cover fixed no-repeat!important}
 .topbar{background:linear-gradient(180deg,rgba(8,6,5,.9),rgba(8,6,5,.5))!important}
-.tagline{padding-left:55px!important;color:#d8c7b0!important}
-.welcomeHero{margin:12px;border-radius:22px;padding:26px 18px;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=90") center/cover no-repeat;box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.welcomeContent h2{margin:6px 0;font-size:20px}
-.welcomeContent p{opacity:.8;font-size:12px}
-.welcomeBadge{background:rgba(255,255,255,.08);padding:6px 10px;border-radius:999px;font-size:11px}
+.tagline{text-align:left!important;padding-left:55px!important;color:#d8c7b0!important}
 .tabs,.subtabs,.miniTabs{background:rgba(20,12,9,.6)!important}
 .card{background:linear-gradient(180deg,rgba(28,18,14,.9),rgba(10,6,5,.9))!important}
 .btn,.qty button{background:linear-gradient(180deg,#ff6a5c,#b91c1c)!important}
