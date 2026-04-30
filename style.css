@@ -27,15 +27,14 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:li
 .subtabs{margin:13px 12px 0;padding:7px;border:1px solid rgba(244,231,207,.16);border-radius:24px;background:rgba(12,8,5,.52);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 10px 22px rgba(0,0,0,.18)}
 .miniTabs{position:relative;margin:10px auto 2px;padding:5px;width:max-content;max-width:calc(100% - 24px);background:rgba(255,255,255,.075);border-radius:999px;border:1px solid rgba(244,231,207,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 20px rgba(0,0,0,.16)}
 .miniTabs::before{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/2);border-radius:999px;background:linear-gradient(180deg,#fff4d5,#d7b982);box-shadow:0 8px 16px rgba(0,0,0,.26);transition:transform .28s cubic-bezier(.2,.8,.2,1);z-index:0}
-.miniTabs:has(button:nth-child(2).active)::before{transform:translateX(100%)}
-.miniTabs:has(button:nth-child(3).active)::before{transform:translateX(200%);width:calc((100% - 10px)/3)}
-.miniTabs:has(button:nth-child(4).active)::before{transform:translateX(300%);width:calc((100% - 10px)/4)}
-.miniTabs:has(button:nth-child(5).active)::before{transform:translateX(400%);width:calc((100% - 10px)/5)}
+.miniTabs:has(button:nth-child(2).active):not(:has(button:nth-child(3)))::before{transform:translateX(100%)}
+.miniTabs:has(button:nth-child(3))::before{display:none}
 .subtabs button,.miniTabs button{min-width:max-content;border:1px solid transparent;border-radius:999px;color:#fff;transition:all .18s ease;box-shadow:none}
 .subtabs button{padding:9px 13px;background:rgba(255,255,255,.045);font-weight:700}
 .miniTabs button{position:relative;z-index:1;font-size:12px;padding:8px 13px;background:transparent!important;font-weight:800;color:rgba(255,255,255,.82)}
 .tabs button.active,.subtabs button.active{background:linear-gradient(180deg,#fff4d5,#d7b982);color:#1b120c;box-shadow:0 8px 18px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.12) inset}
-.miniTabs button.active{color:#1b120c;box-shadow:none!important}
+.miniTabs:not(:has(button:nth-child(3))) button.active{color:#1b120c;box-shadow:none!important}
+.miniTabs:has(button:nth-child(3)) button.active{background:linear-gradient(180deg,#fff4d5,#d7b982)!important;color:#1b120c;box-shadow:0 6px 14px rgba(0,0,0,.22)!important}
 .section,.subsection,.miniSection{display:none;padding:16px 12px 205px}.section.active,.subsection.active,.miniSection.active{display:block;animation:tabFade .28s ease both}.subsection.active{padding-top:4px}.miniSection.active{padding-top:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:13px;animation:cardsIn .28s ease both}
 @keyframes tabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @keyframes cardsIn{from{opacity:.15;transform:translateY(10px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
