@@ -5,6 +5,7 @@ const menu = window.menuData || {};
 function itemName(item){ return lang === 'ar' ? item.ar : item.en; }
 function cartName(key){ return lang === 'ar' ? cart[key].ar : cart[key].en; }
 function itemPrice(item){ return Number(item.price || 0); }
+function betterImage(url){ return String(url || '').replace(/w=500/g,'w=900').replace(/q=80/g,'q=90'); }
 
 function findItem(id){
   for (const category of Object.values(menu)) {
@@ -20,7 +21,7 @@ function card(item){
   const disabled = item.available === false;
   return `
     <div class="card ${disabled ? 'unavailable' : ''}">
-      <img src="${item.image}" alt="${item.en}">
+      <img src="${betterImage(item.image)}" alt="${item.en}">
       <div class="cardBody">
         <h3>${itemName(item)}</h3>
         <p class="price">${itemPrice(item).toFixed(3)} OMR</p>
@@ -114,13 +115,16 @@ function payCash(){
 }
 
 function callWaiter(){
-  const mode = document.querySelector("input[name='mode']:checked")?.value || 'dine';
-  if(mode === 'take'){
-    alert(lang === 'ar' ? 'خدمة النادل مخصصة للجلوس داخل الصالة.' : 'Waiter call is for dine-in tables.');
+  const tableCount = 30;
+  const message = lang === 'ar' ? 'أدخل رقم الطاولة من 1 إلى 30' : 'Enter your table number from 1 to 30';
+  const input = prompt(message, '1');
+  if (input === null) return;
+  const number = Number(input);
+  if (!Number.isInteger(number) || number < 1 || number > tableCount) {
+    alert(lang === 'ar' ? 'رقم الطاولة غير صحيح.' : 'Invalid table number.');
     return;
   }
-  const table = document.getElementById('table')?.value || '';
-  alert((lang === 'ar' ? 'تم استدعاء النادل إلى ' : 'Waiter is coming to ') + table);
+  alert((lang === 'ar' ? 'تم استدعاء النادل إلى طاولة ' : 'Waiter is coming to table ') + number);
 }
 
 function showMain(id,btn){
