@@ -4,59 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Royalty Cafe</title>
-
-<style>
-:root{
-  --cream:#f4e7cf;
-  --gold:#d7b982;
-  --deep:#0d0805;
-  --glass:rgba(20,16,13,.64);
-  --line:rgba(244,231,207,.18);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 20% 10%,rgba(215,185,130,.22),transparent 25%),
-    linear-gradient(rgba(0,0,0,.24),rgba(0,0,0,.66)),
-    url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=90")
-    center/cover fixed no-repeat;
-}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 70%);z-index:-1}
-.topbar{position:sticky;top:0;z-index:80;padding:10px 12px 8px;background:linear-gradient(180deg,rgba(13,8,5,.82),rgba(13,8,5,.44));backdrop-filter:blur(16px) saturate(130%);border-bottom:1px solid var(--line);box-shadow:0 12px 32px rgba(0,0,0,.32)}
-.brand{display:flex;align-items:center;gap:9px}html[dir="rtl"] .brand{justify-content:flex-end}html[dir="ltr"] .brand{justify-content:flex-start}.crown{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,#fff7df,#caa45c);color:#1b120c;font-size:18px;box-shadow:0 8px 18px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.7)}
-.logo{margin:0;font-size:24px;line-height:1;font-family:Georgia,"Times New Roman",serif;letter-spacing:1.7px;font-weight:900;background:linear-gradient(90deg,#fff8df,#d7b982,#fff1c7);-webkit-background-clip:text;color:transparent;text-shadow:0 10px 24px rgba(0,0,0,.45)}
-.tagline{margin:7px 0 8px;color:#f2e9db;opacity:.92;font-size:12px;text-align:center;letter-spacing:.3px}.lang{text-align:center}.lang button{padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--cream);margin:2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}.lang button.active{background:linear-gradient(180deg,#fff4d5,#d7b982);color:#1b120c}
-.tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px;background:rgba(10,7,5,.42);backdrop-filter:blur(10px);border-bottom:1px solid rgba(244,231,207,.10)}
-.subtabs,.miniTabs{display:flex;overflow-x:auto;gap:8px;padding:8px 10px;background:transparent;border:0;backdrop-filter:none;scrollbar-width:none}.subtabs::-webkit-scrollbar,.miniTabs::-webkit-scrollbar{display:none}
-.subtabs{margin:12px 12px 0;border:1px solid rgba(244,231,207,.14);border-radius:22px;background:rgba(12,8,5,.46);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 22px rgba(0,0,0,.18)}
-.miniTabs{margin:10px 12px 2px;padding:6px;background:rgba(255,255,255,.055);border-radius:18px;border:1px solid rgba(244,231,207,.10)}
-.tabs button{min-width:0;padding:11px 14px;border:1px solid rgba(244,231,207,.14);border-radius:999px;background:rgba(255,255,255,.075);color:#fff;font-weight:750;letter-spacing:.2px;box-shadow:inset 0 1px 0 rgba(255,255,255,.07);transition:all .15s ease}
-.subtabs button,.miniTabs button{min-width:max-content;padding:9px 13px;border:1px solid rgba(244,231,207,.12);border-radius:999px;background:rgba(255,255,255,.055);color:#fff;font-weight:650;transition:all .15s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.miniTabs button{font-size:12px;padding:8px 12px;background:rgba(0,0,0,.15)}
-.tabs button.active,.subtabs button.active,.miniTabs button.active{background:linear-gradient(180deg,#fff4d5,#d7b982);color:#1b120c;box-shadow:0 8px 18px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.12) inset}
-.section,.subsection,.miniSection{display:none;padding:16px 12px 185px}.section.active,.subsection.active,.miniSection.active{display:block}.subsection.active{padding-top:4px}.miniSection.active{padding-top:12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:13px}
-.card{position:relative;background:linear-gradient(180deg,rgba(35,25,17,.76),rgba(12,8,5,.74));border:1px solid rgba(244,231,207,.16);border-radius:20px;overflow:hidden;box-shadow:0 16px 34px rgba(0,0,0,.40);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}.card::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}.card:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,.52);border-color:rgba(244,231,207,.28)}.card img{width:100%;height:112px;object-fit:cover;filter:saturate(1.06) contrast(1.03)}.cardBody{padding:10px;text-align:center}.card h3{margin:0 0 6px;font-size:14px;letter-spacing:.2px}.price{color:var(--cream);font-weight:800;font-size:13px}.qty{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:7px}.qty span{min-width:22px;padding:3px 6px;border-radius:999px;background:rgba(255,255,255,.08)}.qty button{width:27px;height:27px;border-radius:50%;border:0;background:linear-gradient(180deg,#fff3d5,#d7b982);color:#111;font-weight:900;box-shadow:0 5px 12px rgba(0,0,0,.25)}
-.orderBar{position:fixed;left:10px;right:10px;bottom:10px;background:linear-gradient(180deg,rgba(10,7,5,.86),rgba(0,0,0,.80));border:1px solid rgba(244,231,207,.36);border-radius:18px;padding:10px;z-index:30;backdrop-filter:blur(14px) saturate(135%);box-shadow:0 -14px 34px rgba(0,0,0,.48)}.orderText{font-size:13px;color:#eee;max-height:42px;overflow:auto;margin:0 0 7px}.row{display:grid;grid-template-columns:1fr 1fr;gap:7px}select,button{padding:10px;border-radius:12px;border:0;font-weight:750}select{background:rgba(255,255,255,.92);color:#1b120c}.btn{background:linear-gradient(180deg,#fff4d5,#d7b982);color:#111;box-shadow:0 8px 18px rgba(0,0,0,.24)}.payment{display:none;gap:7px;margin-top:7px}.payment.show{display:grid;grid-template-columns:1fr 1fr}.payment button{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(244,231,207,.22)}.cartDetails{font-size:13px;margin-top:8px;max-height:86px;overflow:auto}.cartDetails div{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:5px 0;padding:5px 7px;border-radius:10px;background:rgba(255,255,255,.06)}.cartDetails button{padding:5px 9px;background:var(--cream);color:#111}.waiter{position:fixed;right:16px;bottom:142px;width:60px;height:60px;border-radius:50%;background:linear-gradient(180deg,#fff3d5,#d7b982);color:#111;border:0;font-size:25px;z-index:9999;box-shadow:0 14px 30px rgba(0,0,0,.60),0 0 0 1px rgba(255,255,255,.26) inset;cursor:pointer}.waiter::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid rgba(244,231,207,.34);animation:pulse 1.8s infinite}@keyframes pulse{0%{transform:scale(.9);opacity:.8}70%{transform:scale(1.22);opacity:0}100%{opacity:0}}html[dir="rtl"] .waiter{right:auto;left:16px}
-@media(max-width:600px){.logo{font-size:22px}.card img{height:104px}.waiter{bottom:154px}.row{grid-template-columns:1fr}.grid{grid-template-columns:repeat(auto-fit,minmax(132px,1fr))}.subtabs{margin:10px 10px 0}.miniTabs{margin:8px 10px 0}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <header class="topbar">
   <div class="brand"><span class="crown">👑</span><h1 class="logo">Royalty Cafe</h1></div>
   <p class="tagline" id="tagline">A calm and elegant cafe experience</p>
   <div class="lang"><button class="active" onclick="setLang('en',this)">EN</button><button onclick="setLang('ar',this)">AR</button></div>
 </header>
-
 <div class="tabs">
   <button class="active" onclick="showMain('drinks',this)" data-en="Drinks" data-ar="المشروبات">Drinks</button>
   <button onclick="showMain('food',this)" data-en="Food" data-ar="الطعام">Food</button>
 </div>
-
 <section id="drinks" class="section active">
   <div class="subtabs">
     <button class="active" onclick="showSub('caf',this)" data-en="Caffeinated" data-ar="كافيين">Caffeinated</button>
@@ -85,7 +44,6 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:li
     <div id="tea" class="miniSection"><div class="grid" id="teaGrid"></div></div>
   </div>
 </section>
-
 <section id="food" class="section">
   <div class="subtabs">
     <button class="active" onclick="showSub('pizza',this)" data-en="Pizza" data-ar="بيتزا">Pizza</button>
@@ -100,9 +58,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:li
   <div id="lasagna" class="subsection"><div class="grid" id="lasagnaGrid"></div></div>
   <div id="soft" class="subsection"><div class="grid" id="softGrid"></div></div>
 </section>
-
 <button class="waiter" onclick="callWaiter()">🔔</button>
-
 <div class="orderBar">
   <div class="row">
     <div>
@@ -119,42 +75,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:li
     <button onclick="payPaypal()" data-en="PayPal" data-ar="باي بال">PayPal</button>
   </div>
 </div>
-
-<script>
-let lang="en";
-let cart={};
-const menu={
-hotCoffee:[["Espresso","إسبريسو","1.200","https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&w=500&q=80"],["Americano","أمريكانو","1.300","https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=500&q=80"],["Cappuccino","كابتشينو","1.600","https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=500&q=80"],["Latte","لاتيه","1.700","https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=500&q=80"],["Mocha","موكا","1.900","https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80"],["Flat White","فلات وايت","1.800","https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=500&q=80"]],
-coldCoffee:[["Iced Latte","آيس لاتيه","1.900","https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=500&q=80"],["Cold Brew","كولد برو","2.000","https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=500&q=80"],["Iced Mocha","آيس موكا","2.100","https://images.unsplash.com/photo-1551030173-122aabc4489c?auto=format&fit=crop&w=500&q=80"],["Frappe","فرابيه","2.200","https://images.unsplash.com/photo-1561047029-3000c68339ca?auto=format&fit=crop&w=500&q=80"]],
-hotNon:[["Hot Chocolate","شوكولاتة ساخنة","1.700","https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=500&q=80"],["Karak Tea","شاي كرك","1.000","https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=500&q=80"],["Saffron Milk","حليب بالزعفران","1.800","https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=500&q=80"]],
-coldNon:[["Iced Tea","شاي مثلج","1.500","https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=80"],["Lemon Mint","ليمون بالنعناع","1.600","https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=500&q=80"],["Iced Chocolate","شوكولاتة مثلجة","1.900","https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=500&q=80"]],
-mocktails:[["Mojito","موهيتو","2.000","https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=500&q=80"],["Blue Lagoon","بلو لاجون","2.200","https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=500&q=80"],["Strawberry Mojito","موهيتو فراولة","2.300","https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=80"]],
-juices:[["Orange Juice","عصير برتقال","1.800","https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=500&q=80"],["Mango Juice","عصير مانجو","2.000","https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=500&q=80"],["Watermelon Juice","عصير بطيخ","1.800","https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=500&q=80"],["Pineapple Juice","عصير أناناس","2.000","https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&w=500&q=80"]],
-tea:[["Green Tea","شاي أخضر","1.000","https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?auto=format&fit=crop&w=500&q=80"],["Black Tea","شاي أسود","1.000","https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80"],["Mint Tea","شاي بالنعناع","1.000","https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?auto=format&fit=crop&w=500&q=80"],["Chamomile","بابونج","1.200","https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80"]],
-pizza:[["Margherita","مارغريتا","3.000","https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=500&q=80"],["Pepperoni","بيبروني","3.500","https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=80"],["BBQ Chicken","دجاج باربكيو","3.700","https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=500&q=80"],["Four Cheese","أربع أجبان","3.800","https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=500&q=80"]],
-pasta:[["Carbonara","كاربونارا","3.500","https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=500&q=80"],["Alfredo","ألفريدو","3.300","https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=500&q=80"],["Bolognese","بولونيز","3.600","https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"],["Pesto Pasta","باستا بيستو","3.600","https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=500&q=80"]],
-burger:[["Beef Burger","برجر لحم","2.800","https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80"],["Chicken Burger","برجر دجاج","2.600","https://images.unsplash.com/photo-1615297928064-24977384d0da?auto=format&fit=crop&w=500&q=80"],["Cheese Burger","تشيز برجر","3.000","https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=80"],["Spicy Burger","برجر حار","3.100","https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=500&q=80"]],
-lasagna:[["Beef Lasagna","لازانيا باللحم","3.500","https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=500&q=80"],["Chicken Lasagna","لازانيا بالدجاج","3.400","https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"],["Vegetable Lasagna","لازانيا بالخضار","3.200","https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80"]],
-soft:[["Mineral Water","ماء معدني","0.300","https://images.unsplash.com/photo-1564419320461-6870880221ad?auto=format&fit=crop&w=500&q=80"],["Sparkling Water","ماء غازي","0.800","https://images.unsplash.com/photo-1608270586620-248524c67de9?auto=format&fit=crop&w=500&q=80"],["Cola","كولا","0.600","https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=500&q=80"],["Sprite","سبرايت","0.600","https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=500&q=80"]]
-};
-function itemName(item){return lang==="ar"?item[1]:item[0]}
-function cartName(key){return lang==="ar"?cart[key].ar:cart[key].en}
-function card(item){let key=item[0];let c=cart[key]?.qty||0;return `<div class="card"><img src="${item[3]}" alt="${item[0]}"><div class="cardBody"><h3>${itemName(item)}</h3><p class="price">${item[2]} OMR</p><div class="qty"><button onclick="update('${item[0]}','${item[1]}',${item[2]},-1)">-</button><span>${c}</span><button onclick="update('${item[0]}','${item[1]}',${item[2]},1)">+</button></div></div></div>`}
-function render(){Object.keys(menu).forEach(k=>{document.getElementById(k+"Grid").innerHTML=menu[k].map(card).join("")});updateOrder();translate()}
-function update(en,ar,price,val){if(!cart[en])cart[en]={en,ar,price,qty:0};cart[en].qty+=val;if(cart[en].qty<=0)delete cart[en];document.getElementById("payment").classList.remove("show");render()}
-function updateOrder(){let list=Object.keys(cart);if(list.length===0){document.getElementById("order").innerText=lang==="ar"?"لم يتم اختيار أي عناصر.":"No items selected.";document.getElementById("cartDetails").innerHTML="";return}let total=list.reduce((s,k)=>s+cart[k].price*cart[k].qty,0).toFixed(3);document.getElementById("order").innerText=list.map(k=>cartName(k)+" x"+cart[k].qty).join(", ")+" | "+(lang==="ar"?"المجموع: ":"Total: ")+total+" OMR"}
-function confirmOrder(){let list=Object.keys(cart);if(list.length===0){alert(lang==="ar"?"الرجاء اختيار عنصر واحد على الأقل.":"Please select at least one item.");return}document.getElementById("payment").classList.add("show");document.getElementById("cartDetails").innerHTML=list.map(k=>`<div><span>${cartName(k)} x${cart[k].qty}</span><span><button onclick="update('${cart[k].en}','${cart[k].ar}',${cart[k].price},-1)">-</button><button onclick="update('${cart[k].en}','${cart[k].ar}',${cart[k].price},1)">+</button></span></div>`).join("")}
-function payPaypal(){alert(lang==="ar"?"باي بال غير متاح حالياً.":"PayPal is currently unavailable.")}
-function payCash(){let mode=document.querySelector("input[name='mode']:checked").value;let table=document.getElementById("table").value;let place=mode==="take"?(lang==="ar"?"سفري":"Takeaway"):table;alert((lang==="ar"?"تم تأكيد الطلب. سيصل النادل أو موظف الصالة لاستلام الدفع نقداً.":"Order confirmed. A waiter or floor staff will come for cash payment.")+"\n"+place)}
-function callWaiter(){let mode=document.querySelector("input[name='mode']:checked").value;if(mode==="take"){alert(lang==="ar"?"خدمة النادل مخصصة للجلوس داخل الصالة.":"Waiter call is for dine-in tables.");return}let table=document.getElementById("table").value;alert((lang==="ar"?"تم استدعاء النادل إلى ":"Waiter is coming to ")+table)}
-function showMain(id,btn){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
-function showSub(id,btn){let p=btn.closest(".section");p.querySelectorAll(".subsection").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");p.querySelectorAll(".subtabs button").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
-function showMini(id,btn){let p=btn.closest(".subsection");p.querySelectorAll(".miniSection").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");p.querySelectorAll(".miniTabs button").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
-function modeChanged(){let mode=document.querySelector("input[name='mode']:checked").value;document.getElementById("table").disabled=mode==="take"}
-function setLang(l,btn){lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");render()}
-function translate(){document.getElementById("tagline").innerText=lang==="ar"?"تجربة مقهى هادئة وأنيقة":"A calm and elegant cafe experience";document.querySelectorAll("[data-en]").forEach(el=>{el.innerText=lang==="ar"?el.dataset.ar:el.dataset.en});Array.from(document.getElementById("table").options).forEach((o,i)=>{o.text=lang==="ar"?"طاولة "+(i+1):"Table "+(i+1)})}
-const tableEl=document.getElementById("table");for(let i=1;i<=30;i++){let o=document.createElement("option");o.value="Table "+i;o.text="Table "+i;tableEl.add(o)}
-render();modeChanged();
-</script>
+<script src="menu-data.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
