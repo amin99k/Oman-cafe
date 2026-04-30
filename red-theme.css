@@ -1,8 +1,15 @@
-:root{--cream:#f5e9da;--gold:#c8a26a;--deep:#080607;--glass:rgba(20,10,8,.7);--line:rgba(255,240,220,.14)}
-body{background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),url("https://raw.githubusercontent.com/amin99k/Oman-cafe/396c6fa1d7327444dee9126f757aca324f14113f/0E0B330E-38EB-40EC-AD0B-88E178A7F602.png") center/cover fixed no-repeat!important}
-.topbar{background:linear-gradient(180deg,rgba(8,6,5,.9),rgba(8,6,5,.5))!important}
-.tagline{text-align:left!important;padding-left:55px!important;color:#d8c7b0!important}
-.tabs,.subtabs,.miniTabs{background:rgba(20,12,9,.6)!important}
-.card{background:linear-gradient(180deg,rgba(28,18,14,.9),rgba(10,6,5,.9))!important}
-.btn,.qty button{background:linear-gradient(180deg,#ff6a5c,#b91c1c)!important}
-.waiter{background:linear-gradient(180deg,#ff6a5c,#b91c1c)!important}
+:root{--cream:#f5e9da;--gold:#c8a26a;--deep:#080607;--glass:rgba(18,12,9,.72);--line:rgba(255,240,220,.13);--accent:#d44a4a;--accent-dark:#9f1717}
+body{background:radial-gradient(circle at 72% 18%,rgba(255,165,92,.18),transparent 34%),radial-gradient(circle at 18% 82%,rgba(180,88,48,.12),transparent 42%),linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.92)),url("https://raw.githubusercontent.com/amin99k/Oman-cafe/396c6fa1d7327444dee9126f757aca324f14113f/0E0B330E-38EB-40EC-AD0B-88E178A7F602.png") center/cover fixed no-repeat!important}
+.topbar{background:linear-gradient(180deg,rgba(8,6,5,.94),rgba(8,6,5,.62))!important;border-bottom-color:rgba(255,240,220,.10)!important}
+.logo{background:linear-gradient(90deg,#fff4e4,#c8a26a,#f1d9b0)!important;-webkit-background-clip:text!important;color:transparent!important}
+.crown::before{background:linear-gradient(135deg,#fff2c8 0%,#d4a349 44%,#8b5b24 100%)!important}.crown::after{background:linear-gradient(90deg,#8b5b24,#ffe7a4,#8b5b24)!important}
+.tagline{text-align:left!important;padding-left:55px!important;color:#d8c7b0!important;opacity:.84!important}
+.tabs,.subtabs,.miniTabs{background:rgba(22,14,10,.58)!important;border-color:rgba(255,240,220,.12)!important;box-shadow:0 14px 34px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.05)!important}
+.tabs button,.subtabs button,.miniTabs button{background:rgba(255,255,255,.045)!important;color:#f5e9da!important}
+.tabs button.active,.subtabs button.active,.miniTabs::before,.miniTabs:has(button:nth-child(3)) button.active{background:linear-gradient(180deg,#f1d9b0,#c8a26a)!important;color:#16100c!important}
+.card{background:linear-gradient(180deg,rgba(30,20,15,.74),rgba(8,5,4,.86))!important;backdrop-filter:blur(12px) saturate(120%)!important;border:1px solid rgba(255,240,220,.10)!important;box-shadow:0 14px 34px rgba(0,0,0,.58),inset 0 1px 0 rgba(255,255,255,.06)!important}
+.card img{filter:blur(.25px) saturate(1.12) contrast(1.05)!important;transform:scale(1.01)!important}
+.btn,.qty button{background:linear-gradient(180deg,#e0524f,#a51616)!important;color:#fff!important;box-shadow:0 7px 16px rgba(0,0,0,.42)!important}
+.waiter{background:linear-gradient(180deg,#e0524f,#a51616)!important;color:#fff!important;box-shadow:0 14px 32px rgba(0,0,0,.62),0 0 0 1px rgba(255,255,255,.18) inset!important}
+.orderBar{background:linear-gradient(180deg,rgba(15,10,8,.84),rgba(0,0,0,.84))!important;border-color:rgba(255,240,220,.18)!important;box-shadow:0 -18px 42px rgba(0,0,0,.58)!important}
+.checkoutPanel{background:linear-gradient(180deg,rgba(25,16,12,.97),rgba(6,4,3,.97))!important;border-color:rgba(255,240,220,.16)!important}
